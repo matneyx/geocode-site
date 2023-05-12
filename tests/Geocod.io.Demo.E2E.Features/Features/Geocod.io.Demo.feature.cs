@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Geocod.io.Demo.E2E.Features.TestFeatures
+namespace Geocod.io.Demo.E2E.Features.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -40,7 +40,7 @@ namespace Geocod.io.Demo.E2E.Features.TestFeatures
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "TestFeatures", "Geocod_io_Demo", "  As a user\r\n  I want to use the geocod.io API\r\n  So that I can get the latitude " +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Geocod_io_Demo", "  As a user\r\n  I want to use the geocod.io API\r\n  So that I can get the latitude " +
                     "and longitude of a list of given addresses", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -81,16 +81,16 @@ namespace Geocod.io.Demo.E2E.Features.TestFeatures
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="I can navigate to the site")]
+        [Xunit.SkippableFactAttribute(DisplayName="I can upload a file")]
         [Xunit.TraitAttribute("FeatureTitle", "Geocod_io_Demo")]
-        [Xunit.TraitAttribute("Description", "I can navigate to the site")]
-        public void ICanNavigateToTheSite()
+        [Xunit.TraitAttribute("Description", "I can upload a file")]
+        public void ICanUploadAFile()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can navigate to the site", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can upload a file", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
-  this.ScenarioInitialize(scenarioInfo);
+   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -100,13 +100,19 @@ namespace Geocod.io.Demo.E2E.Features.TestFeatures
             {
                 this.ScenarioStart();
 #line 7
-    testRunner.Given("I have a web browser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("I have loaded the site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-    testRunner.When("I navigate to the site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.And("There is a file upload field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
-    testRunner.Then("I should see the site title", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.When("I select a file to upload", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 10
+    testRunner.And("I click the Upload button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 11
+    testRunner.Then("I should get a message that the file was uploaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

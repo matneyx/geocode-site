@@ -348,15 +348,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StepDefinitions\GeocodioDemoSteps.cs" />
-    <Compile Include="TestFeatures\Geocod.io.Demo.feature.cs" />
+    <Compile Include="Steps\GeocodioDemoSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <None Include="TestFeatures\Geocod.io.Demo.feature" />
+    <None Include="Features\Geocod.io.Demo.feature" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.1.1.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
@@ -371,6 +370,14 @@
       <Project>{6a98e8a7-3a44-45ff-a622-ac4bef1327c7}</Project>
       <Name>Geocod.io.Demo.E2E.Screenplay</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Files\test.csv" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\test.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
