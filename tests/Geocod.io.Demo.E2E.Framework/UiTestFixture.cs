@@ -30,15 +30,15 @@ namespace Geocod.io.Demo.E2E.Framework;
 ///     run once per test suite
 /// </summary>
 // ReSharper disable once ClassNeverInstantiated.Global
-public class TestFixture : TestBase, IDisposable
+public class UiTestFixture : TestBase, IDisposable
 {
     public readonly DriverContext DriverContext;
     public readonly AppSettings AppSettings;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="TestFixture" /> class.
+    ///     Initializes a new instance of the <see cref="UiTestFixture" /> class.
     /// </summary>
-    public TestFixture(DriverContext driverContext)
+    public UiTestFixture(DriverContext driverContext)
     {
         DriverContext = new DriverContext
         {
@@ -63,9 +63,4 @@ public class TestFixture : TestBase, IDisposable
         DriverContext.Stop();
         GC.SuppressFinalize(this);
     }
-}
-
-public class AppSettings
-{
-    public string Url { get; set; }
 }
