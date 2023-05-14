@@ -1,4 +1,6 @@
-﻿namespace Geocod.io.Demo;
+﻿using Geocod.io.Demo.Clients;
+
+namespace Geocod.io.Demo;
 
 public class Startup
 {
@@ -6,8 +8,8 @@ public class Startup
     {
         var builder = new ConfigurationBuilder()
             .SetBasePath(env.ContentRootPath)
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+            .AddJsonFile("appsettings.json", true, true)
+            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
             .AddEnvironmentVariables();
         Configuration = builder.Build();
     }
@@ -23,19 +25,17 @@ public class Startup
         services.AddControllers();
 
         services.AddSwaggerDocument();
+
+        services.AddScoped<IGeocodIoClient, GeocodIoClient>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
     {
         if (env.IsDevelopment())
-        {
             app.UseDeveloperExceptionPage();
-        }
         else
-        {
             app.UseExceptionHandler("/Home/Error");
-        }
 
         var options = new DefaultFilesOptions();
         options.DefaultFileNames.Clear();

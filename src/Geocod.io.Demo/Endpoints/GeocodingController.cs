@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using CsvHelper;
+using Geocod.io.Demo.Clients;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Geocod.io.Demo.Endpoints;
@@ -8,22 +9,30 @@ namespace Geocod.io.Demo.Endpoints;
 [Route("api/geocode")]
 public class GeocodeController : ControllerBase
 {
-    [HttpPost, Route("from-file")]
-    public IActionResult FromFile(IFormFile file)
+    private readonly IGeocodIoClient _geocodIoClient;
+
+    public GeocodeController(IGeocodIoClient geocodIoClient)
+    {
+        _geocodIoClient = geocodIoClient;
+    }
+
+    [HttpPost]
+    [Route("from-file")]
+    public async Task<IActionResult> FromFile(IFormFile file)
     {
         Console.WriteLine($"File uploaded: {file.FileName}");
-
-
 
         try
         {
             using var streamReader = new StreamReader(file.OpenReadStream());
             using var csv = new CsvReader(streamReader, CultureInfo.InvariantCulture);
 
-            csv.Context.RegisterClassMap<GeocodioAddressMap>();
-            csv.GetRecords<GeocodioAddress>().ToList();
+            csv.Context.RegisterClassMap<GeocodIoAddressMap>();
+            var list = csv.GetRecords<GeocodIoAddress>().ToList();
 
-            return Ok();
+            var response = await _geocodIoClient.GeocodeList(list);
+
+            return Ok(response);
         }
         catch (Exception e)
         {
