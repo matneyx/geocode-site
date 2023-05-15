@@ -3,11 +3,14 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Toast from 'react-bootstrap/Toast';
 import InputGroup from 'react-bootstrap/InputGroup';
+import AddressCard from "./address-card";
 
 const FileUploader = () => {
   const [showToast, setShowToast] = useState(false);
   const [disableButton, setDisableButton] = useState(true);
   const [uploadedFileName, setUploadedFileName] = useState(null);
+  const [addressCards, setAddressCards] = useState([]);
+  const [showAddressCards, setShowAddressCards] = useState(false);
   const inputRef = useRef(null);
 
   const handleUpload = async () => {
@@ -19,7 +22,12 @@ const FileUploader = () => {
       await fetch('/api/geocode/from-file', {
         method: 'POST',
         body: data
-      }).then(response => {
+      }).then(async response => {
+        var responseBody = await response.json();
+
+        console.log(responseBody)
+        setShowAddressCards(true);
+        setAddressCards(responseBody);
         setUploadedFileName(inputRef.current.files[0].name);
         setShowToast(true);
       });
@@ -36,6 +44,8 @@ const FileUploader = () => {
     setDisableButton(true);
     inputRef.current.value = null;
   }
+
+  console.log('AddressCards: ' + addressCards);
 
   return (
     <>
@@ -63,6 +73,11 @@ const FileUploader = () => {
         </Toast.Header>
         <Toast.Body id="file-uploaded-body">File name: {uploadedFileName}</Toast.Body>
       </Toast>
+      {showAddressCards &&
+        <div id="address-cards">
+          {addressCards.map((addressCardInformation, index) => <AddressCard key={index} {...addressCardInformation} />)}
+        </div>
+      }
     </>
   );
 };

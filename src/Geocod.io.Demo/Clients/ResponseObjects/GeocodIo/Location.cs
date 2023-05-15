@@ -2,7 +2,7 @@
 
 namespace Geocod.io.Demo.Clients.ResponseObjects.GeocodIo;
 
-public class Location
+public record Location
 {
     [JsonProperty("lat")] public double Latitude { get; set; }
 

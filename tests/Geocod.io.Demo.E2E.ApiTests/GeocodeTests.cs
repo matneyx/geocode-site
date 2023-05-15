@@ -36,6 +36,8 @@ public class GeocodeTests : IClassFixture<ApiTestFixture>
         response.StatusCode.ShouldBe(HttpStatusCode.OK);
         var results = JsonConvert.DeserializeObject<List<GeocodioResponse>>(response.Content);
 
+        results.Count.ShouldBe(24);
+
         results.First().FormattedAddress.ShouldBe("660 Pennsylvania Ave SE, Washington, DC 20003");
         results.First().Accuracy.ShouldBe(1);
         results.First().AccuracyType.ShouldBe("rooftop");

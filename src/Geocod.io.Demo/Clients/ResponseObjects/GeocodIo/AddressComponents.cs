@@ -2,7 +2,7 @@
 
 namespace Geocod.io.Demo.Clients.ResponseObjects.GeocodIo;
 
-public class AddressComponents
+public record AddressComponents
 {
     public string Number { get; set; }
 

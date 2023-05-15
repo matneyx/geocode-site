@@ -1,0 +1,317 @@
+[
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "660 Pennsylvania Ave SE, Washington, DC 20003",
+    "latitude": 38.885172,
+    "longitude": -76.996565
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1718 14th St NW, Washington, DC 20009",
+    "latitude": 38.913274,
+    "longitude": -77.032266
+  },
+  {
+    "accuracy": 0.9,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1309 5th St NE, Washington, DC 20002",
+    "latitude": 38.908724,
+    "longitude": -76.997653
+  },
+  {
+    "accuracy": 0.9,
+    "accuracyType": "range_interpolation",
+    "formattedAddress": "1309 5th St NE, Washington, DC 20002",
+    "latitude": 38.908698,
+    "longitude": -76.997878
+  },
+  {
+    "accuracy": 0.8,
+    "accuracyType": "range_interpolation",
+    "formattedAddress": "1309 5th St NE, Washington, DC 20002",
+    "latitude": 38.908857,
+    "longitude": -76.998133
+  },
+  {
+    "accuracy": 0.2,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1309 5th St NW, Washington, DC 20001",
+    "latitude": 38.907613,
+    "longitude": -77.0187
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "2150 P St NW, Washington, DC 20037",
+    "latitude": 38.90948,
+    "longitude": -77.048527
+  },
+  {
+    "accuracy": 0.9,
+    "accuracyType": "rooftop",
+    "formattedAddress": "201 F St NE, Washington, DC 20002",
+    "latitude": 38.897139,
+    "longitude": -77.003286
+  },
+  {
+    "accuracy": 0.9,
+    "accuracyType": "range_interpolation",
+    "formattedAddress": "201 F St NE, Washington, DC 20002",
+    "latitude": 38.897187,
+    "longitude": -77.003509
+  },
+  {
+    "accuracy": 0.8,
+    "accuracyType": "range_interpolation",
+    "formattedAddress": "201 F St NE, Washington, DC 20002",
+    "latitude": 38.897486,
+    "longitude": -77.003489
+  },
+  {
+    "accuracy": 0.2,
+    "accuracyType": "rooftop",
+    "formattedAddress": "201 F St NW, Washington, DC 20001",
+    "latitude": 38.897618,
+    "longitude": -77.014124
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1001 2nd St SE, Washington, DC 20003",
+    "latitude": 38.877737,
+    "longitude": -77.003695
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1645 Wisconsin Ave NW, Washington, DC 20007",
+    "latitude": 38.911626,
+    "longitude": -77.065281
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "820 E Baltimore St, Baltimore, MD 21202",
+    "latitude": 39.290427,
+    "longitude": -76.60485
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "820 E Baltimore St, Baltimore, MD 21202",
+    "latitude": 39.290317,
+    "longitude": -76.604786
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "800 F St NW, Washington, DC 20004",
+    "latitude": 38.896987,
+    "longitude": -77.023286
+  },
+  {
+    "accuracy": 0.85,
+    "accuracyType": "rooftop",
+    "formattedAddress": "800 F St NE, Washington, DC 20002",
+    "latitude": 38.897505,
+    "longitude": -76.994709
+  },
+  {
+    "accuracy": 0.85,
+    "accuracyType": "range_interpolation",
+    "formattedAddress": "800 F St NW, Washington, DC 20004",
+    "latitude": 38.897357,
+    "longitude": -77.022953
+  },
+  {
+    "accuracy": 0.85,
+    "accuracyType": "range_interpolation",
+    "formattedAddress": "800 F St NW, Washington, DC 20002",
+    "latitude": 38.897482,
+    "longitude": -76.994965
+  },
+  {
+    "accuracy": 0.9,
+    "accuracyType": "range_interpolation",
+    "formattedAddress": "700 Constitution Ave NW, Washington, DC 20004",
+    "latitude": 38.892228,
+    "longitude": -77.0219
+  },
+  {
+    "accuracy": 0.76,
+    "accuracyType": "rooftop",
+    "formattedAddress": "700 Constitution Ave NE, Washington, DC 20002",
+    "latitude": 38.892375,
+    "longitude": -76.995437
+  },
+  {
+    "accuracy": 0.76,
+    "accuracyType": "range_interpolation",
+    "formattedAddress": "700 Constitution Ave NW, Washington, DC 20002",
+    "latitude": 38.892166,
+    "longitude": -76.995679
+  },
+  {
+    "accuracy": 0.6,
+    "accuracyType": "rooftop",
+    "formattedAddress": "700 Pennsylvania Ave NW, Washington, DC 20408",
+    "latitude": 38.892833,
+    "longitude": -77.02294
+  },
+  {
+    "accuracy": 0.48,
+    "accuracyType": "rooftop",
+    "formattedAddress": "700 Pennsylvania Ave SE, Washington, DC 20003",
+    "latitude": 38.884839,
+    "longitude": -76.995642
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1123 Pennsylvania Ave SE, Washington, DC 20003",
+    "latitude": 38.882097,
+    "longitude": -76.990714
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "621 Pennsylvania Ave SE, Washington, DC 20003",
+    "latitude": 38.884906,
+    "longitude": -76.997682
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1702 G St NW, Washington, DC 20006",
+    "latitude": 38.89816,
+    "longitude": -77.039982
+  },
+  {
+    "accuracy": 0.8,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1702 Q St NW, Washington, DC 20009",
+    "latitude": 38.910944,
+    "longitude": -77.038902
+  },
+  {
+    "accuracy": 0.6,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1702 C St NE, Washington, DC 20002",
+    "latitude": 38.893591,
+    "longitude": -76.980571
+  },
+  {
+    "accuracy": 0.3,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1702 W Virginia Ave NE, Washington, DC 20002",
+    "latitude": 38.909752,
+    "longitude": -76.986957
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "701 8th St SE, Washington, DC 20003",
+    "latitude": 38.881115,
+    "longitude": -76.995245
+  },
+  {
+    "accuracy": 0.8,
+    "accuracyType": "rooftop",
+    "formattedAddress": "701 8th St NE, Washington, DC 20002",
+    "latitude": 38.899127,
+    "longitude": -76.994722
+  },
+  {
+    "accuracy": 0.8,
+    "accuracyType": "rooftop",
+    "formattedAddress": "701 8th St NW, Washington, DC 20001",
+    "latitude": 38.899009,
+    "longitude": -77.022703
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "12187 Darnestown Rd, Gaithersburg, MD 20878",
+    "latitude": 39.118169,
+    "longitude": -77.251699
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "4961 Elm St, Bethesda, MD 20814",
+    "latitude": 38.982196,
+    "longitude": -77.098161
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "3064 Mt Pleasant St NW, Washington, DC 20009",
+    "latitude": 38.92846,
+    "longitude": -77.037509
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1052 Thomas Jefferson St NW, Washington, DC 20007",
+    "latitude": 38.903887,
+    "longitude": -77.060437
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "475 H St NW, Washington, DC 20001",
+    "latitude": 38.900078,
+    "longitude": -77.018645
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1301 U St NW, Washington, DC 20009",
+    "latitude": 38.917294,
+    "longitude": -77.03052
+  },
+  {
+    "accuracy": 0.8,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1301 U St SE, Washington, DC 20020",
+    "latitude": 38.866034,
+    "longitude": -76.987193
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1726 20th St NW, Washington, DC 20009",
+    "latitude": 38.913694,
+    "longitude": -77.045095
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "1916 I St NW, Washington, DC 20006",
+    "latitude": 38.90115,
+    "longitude": -77.044172
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "107 Church St NE, Vienna, VA 22180",
+    "latitude": 38.902565,
+    "longitude": -77.265693
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "4817 Bethesda Ave, Bethesda, MD 20814",
+    "latitude": 38.981067,
+    "longitude": -77.096506
+  },
+  {
+    "accuracy": 1,
+    "accuracyType": "rooftop",
+    "formattedAddress": "4817 Bethesda Ave, Bethesda, MD 20814",
+    "latitude": 38.981159,
+    "longitude": -77.096573
+  }
+]

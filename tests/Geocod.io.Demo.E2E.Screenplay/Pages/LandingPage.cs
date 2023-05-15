@@ -13,4 +13,6 @@ public class LandingPage
     public static UniversalLocator UploadInput => new("Upload Input", Locator.Id, "upload-input");
     public static UniversalLocator UploadButton => new("Upload Button", Locator.Id, "upload-button");
     public static UniversalLocator FileUploadedToastBody => new("Toast Body", Locator.Id, "file-uploaded-body");
+    public static UniversalLocator AddressCardContainer => new("Address Card Container", Locator.Id, "address-cards");
+    public static UniversalLocator AddressCard => new("Address Card", Locator.ClassName, "address-card");
 }

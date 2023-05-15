@@ -55,5 +55,12 @@ public class GeocodioDemoSteps : IClassFixture<UiTestFixture>
         _actor.WaitsUntil(Appearance.Of(LandingPage.FileUploadedToast.AsWebLocator()), IsEqualTo.True());
         _actor.AsksFor(Text.Of(LandingPage.FileUploadedToastBody.AsWebLocator())).ShouldBe("File name: test.csv");
     }
+
+    [Then(@"I should get a list of coordinates for the addresses in the file")]
+    public void ThenIShouldGetAListOfCoordinatesForTheAddressesInTheFile()
+    {
+        _actor.WaitsUntil(Appearance.Of(LandingPage.AddressCardContainer.AsWebLocator()), IsEqualTo.True());
+        _actor.AsksFor(Count.Of(LandingPage.AddressCard.AsWebLocator())).ShouldBe(24);
+    }
 }
 

@@ -2,7 +2,7 @@
 
 namespace Geocod.io.Demo.Clients.ResponseObjects.GeocodIo;
 
-public class Result
+public record Result
 {
     public string Query { get; set; }
     public Response Response { get; set; }

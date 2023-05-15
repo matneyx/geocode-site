@@ -4,5 +4,5 @@ namespace Geocod.io.Demo.Clients;
 
 public interface IGeocodIoClient
 {
-    Task<List<GeocodIoResponse>> GeocodeList(List<GeocodIoAddress> geocodioAddresses);
+    Task<IEnumerable<GeocodIoResponse>> GeocodeList(List<GeocodIoAddress> geocodioAddresses);
 }

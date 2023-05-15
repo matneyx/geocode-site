@@ -1,4 +1,5 @@
 ﻿using Geocod.io.Demo.Clients;
+using RestSharp;
 
 namespace Geocod.io.Demo;
 
@@ -27,6 +28,16 @@ public class Startup
         services.AddSwaggerDocument();
 
         services.AddScoped<IGeocodIoClient, GeocodIoClient>();
+        services.AddScoped<IRestClient>(_ =>
+        {
+            // TODO: Add URL to the appsettings.json file
+            var client =  new RestClient("https://api.geocod.io/v1.7/");
+
+            // TODO: Add the API Key to the appsettings.json file
+            client.DefaultParameters.AddParameter(new QueryParameter("api_key","00fe16f0646546060e81540514406e1214f1818"));
+
+            return client;
+        });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

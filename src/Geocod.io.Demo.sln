@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geocod.io.Demo", "Geocod.io.Demo\Geocod.io.Demo.csproj", "{2055E41B-EFF4-4487-AF38-87BB26B4BA81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geocod.io.Demo.Tests", "Geocod.io.Demo.Tests\Geocod.io.Demo.Tests.csproj", "{CFDC0611-1A6F-44AB-A4E7-4B85603B6D39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geocod.io.Demo.Tests", "Geocod.io.Demo.Tests\Geocod.io.Demo.Tests.csproj", "{CFDC0611-1A6F-44AB-A4E7-4B85603B6D39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

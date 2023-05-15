@@ -114,6 +114,9 @@ namespace Geocod.io.Demo.E2E.Features.Features
 #line 11
     testRunner.Then("I should get a message that the file was uploaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 12
+    testRunner.And("I should get a list of coordinates for the addresses in the file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

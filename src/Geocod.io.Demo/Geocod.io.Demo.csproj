@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <!-- List of package.json files -->
-    <NpmPackageFile Include="Client/package.json" />
+    <NpmPackageFile Include="Frontend/package.json" />
   </ItemGroup>
 
   <!-- Compute additional metadata for the NpmPackageFile items -->

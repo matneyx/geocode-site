@@ -1,6 +1,6 @@
 ﻿namespace Geocod.io.Demo.Endpoints;
 
-public class GeocodIoResponse
+public record GeocodIoResponse
 {
     public string FormattedAddress { get; set; }
     public double Accuracy { get; set; }
