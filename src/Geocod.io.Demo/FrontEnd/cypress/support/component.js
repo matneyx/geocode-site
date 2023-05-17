@@ -14,6 +14,7 @@
 // ***********************************************************
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'cypress-signalr-mock';
 
 // Import commands.js using ES2015 syntax:
 import './commands'

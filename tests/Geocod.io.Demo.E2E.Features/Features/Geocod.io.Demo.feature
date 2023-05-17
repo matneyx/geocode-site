@@ -5,10 +5,12 @@
 
    Scenario: I can upload a file
     Given I have loaded the site
+    And I have selected "Batch Geocode" from the menu
     And There is a file upload field
     When I select a file to upload
     And I click the Upload button
     Then I should get a message that the file was uploaded
     And I should get a list of coordinates for the addresses in the file
-    
+
    # TODO: Add scenario for invalid file
+

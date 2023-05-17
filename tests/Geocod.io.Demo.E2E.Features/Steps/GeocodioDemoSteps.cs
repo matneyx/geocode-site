@@ -62,5 +62,11 @@ public class GeocodioDemoSteps : IClassFixture<UiTestFixture>
         _actor.WaitsUntil(Appearance.Of(LandingPage.AddressCardContainer.AsWebLocator()), IsEqualTo.True());
         _actor.AsksFor(Count.Of(LandingPage.AddressCard.AsWebLocator())).ShouldBe(24);
     }
+
+    [Given(@"I have selected ""(.*)"" from the menu")]
+    public void GivenIHaveSelectedFromTheMenu(string dropdownSelectionText)
+    {
+        _actor.AttemptsTo(Select.ByText(LandingPage.GeocodeTypeSelector.AsWebLocator(), dropdownSelectionText));
+    }
 }
 

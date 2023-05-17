@@ -15,4 +15,6 @@ public class LandingPage
     public static UniversalLocator FileUploadedToastBody => new("Toast Body", Locator.Id, "file-uploaded-body");
     public static UniversalLocator AddressCardContainer => new("Address Card Container", Locator.Id, "address-cards");
     public static UniversalLocator AddressCard => new("Address Card", Locator.ClassName, "address-card");
+
+    public static UniversalLocator GeocodeTypeSelector => new UniversalLocator("Geocode Type Selector", Locator.Id, "geocode-type-selector");
 }
