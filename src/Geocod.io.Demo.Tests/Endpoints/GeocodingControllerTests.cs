@@ -22,7 +22,7 @@ public class GeocodingControllerTests
         var controller = new GeocodeController(Mock.Of<IGeocodIoClient>());
 
         // act
-        var response = controller.FromFile(file);
+        var response = controller.SmallBatch(file);
         var okResult = response.Result as OkObjectResult;
 
         // assert
@@ -44,7 +44,7 @@ public class GeocodingControllerTests
         var controller = new GeocodeController(Mock.Of<IGeocodIoClient>());
 
         // act
-        var response = controller.FromFile(file);
+        var response = controller.SmallBatch(file);
         var badRequestResult = response.Result as BadRequestObjectResult;
 
         // assert

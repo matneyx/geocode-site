@@ -1,4 +1,5 @@
 ﻿using Geocod.io.Demo.Clients;
+using Geocod.io.Demo.Hubs;
 using RestSharp;
 
 namespace Geocod.io.Demo;
@@ -21,23 +22,20 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         // // Add framework services.
-        services.AddMvc();
+        services.AddSignalR(options =>
+        {
+            options.KeepAliveInterval = TimeSpan.FromSeconds(15);
+        });
 
+
+
+        services.AddMvc();
         services.AddControllers();
 
         services.AddSwaggerDocument();
 
         services.AddScoped<IGeocodIoClient, GeocodIoClient>();
-        services.AddScoped<IRestClient>(_ =>
-        {
-            // TODO: Add URL to the appsettings.json file
-            var client =  new RestClient("https://api.geocod.io/v1.7/");
 
-            // TODO: Add the API Key to the appsettings.json file
-            client.DefaultParameters.AddParameter(new QueryParameter("api_key","00fe16f0646546060e81540514406e1214f1818"));
-
-            return client;
-        });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +62,7 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllerRoute("api", "{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapHub<GeocodeHub>("/hubs/geocode");
         });
     }
 }

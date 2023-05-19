@@ -1,6 +1,6 @@
 ﻿namespace Geocod.io.Demo.Clients.ResponseObjects.GeocodIo;
 
-public record Root
+public record ListResponse
 {
     public List<Result> Results { get; set; }
 }

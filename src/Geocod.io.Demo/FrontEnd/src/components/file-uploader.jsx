@@ -12,25 +12,25 @@ import {useCypressSignalRMock} from "cypress-signalr-mock";
 const FileUploader = ({selectedOptionId}) => {
   const [showToast, setShowToast] = useState(false);
   const [showProgressBar, setShowProgressBar] = useState(false);
-  const [initiateFileUpload, setInitiateFileUpload] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [batchId, setBatchId] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(false);
   const [connection, setConnection] = useState(null);
   const [disableButton, setDisableButton] = useState(true);
-  const [uploadData, setUploadData] = useState(null);
   const [uploadedFileName, setUploadedFileName] = useState(null);
   const [addressCards, setAddressCards] = useState([]);
   const [showAddressCards, setShowAddressCards] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
-    if (connection) {
+    if (connection && batchId) {
       connection.start()
         .then(async () => {
           connection.on("GeocodeStart", (message) => {
-            setUploadStatus("0%");
-            setInitiateFileUpload(message.connected);
-            setShowProgressBar(message.connected);
+            console.log("GeocodeStart");
+            setUploadProgress(message.progress);
+            setUploadStatus(`${message.progress}%`);
+            setShowProgressBar(true);
           });
 
           connection.on("GeocodeUpdate", (message) => {
@@ -38,27 +38,20 @@ const FileUploader = ({selectedOptionId}) => {
             setUploadStatus(`${message.progress}%`);
           });
 
-          connection.on("GeocodeComplete", (response) => {
+          connection.on("GeocodeComplete", async () => {
             setUploadProgress(100);
             setUploadStatus("Upload Complete");
-            setShowProgressBar(false);
-            setShowAddressCards(true);
-            setAddressCards(response);
+
+            await downloadResults();
 
             connection.stop();
           });
 
-          await connection.invoke("SendHandshake", {connected: true});
+          await connection.invoke("SendHandshake", {batchId: batchId});
         })
         .catch(e => console.log('Connection failed: ', e));
     }
-  }, [connection]);
-
-  useEffect(() => {
-    if (connection && initiateFileUpload && uploadData) {
-      connection.invoke("UploadFile", uploadData);
-    }
-  }, [connection, uploadData, initiateFileUpload]);
+  }, [connection, batchId]);
 
   const handleSingleAddressUpload = async () => {
   };
@@ -68,11 +61,12 @@ const FileUploader = ({selectedOptionId}) => {
       const data = new FormData();
       data.append('file', inputRef.current?.files[0]);
 
-      await fetch('/api/geocode/from-file', {
+      await fetch('/api/geocode/small-batch', {
         method: 'POST',
         body: data
       }).then(async response => {
-        var responseBody = await response.json();
+
+        const responseBody = await response.json();
 
         setShowAddressCards(true);
         setAddressCards(responseBody);
@@ -83,26 +77,54 @@ const FileUploader = ({selectedOptionId}) => {
   };
 
   const handleLargeBatchUpload = async () => {
+    console.log("handleLargeBatchUpload")
     if (inputRef.current?.files) {
-      const newConnection = useCypressSignalRMock('/hubs/geocode') ??
-        new HubConnectionBuilder()
-          .withUrl("https://localhost:44348/hubs/geocode")
-          .withAutomaticReconnect()
-          .build();
-
-      setConnection(newConnection);
-
       const data = new FormData();
       data.append('file', inputRef.current?.files[0]);
 
-      setUploadData(data);
+      await fetch('/api/geocode/large-batch', {
+        method: 'POST',
+        body: data
+      }).then(async response => {
+        const responseBody = await response.json();
+        console.log(responseBody);
+
+        await initiateSignalRConnection()
+          .then(() => {
+            console.log("Connection started");
+            setBatchId(responseBody.batchId);
+          });
+      });
     }
+  };
+  const initiateSignalRConnection = async () => {
+    console.log("initiateSignalRConnection")
+    const newConnection = useCypressSignalRMock('/hubs/geocode') ??
+      new HubConnectionBuilder()
+        .withUrl("http://localhost:5216/hubs/geocode")
+        .withAutomaticReconnect()
+        .build();
+
+    setConnection(newConnection);
   }
 
+  const downloadResults = async () => {
+    console.log("downloadResults")
+    await fetch('/api/geocode/download-results?' + new URLSearchParams({ batchId }), {
+      method: 'GET'
+    }).then(async response => {
+      const responseBody = await response.json();
+      console.log(responseBody);
+      setShowProgressBar(false);
+      setShowAddressCards(true);
+      setAddressCards(responseBody);
+    }).catch(e => console.log(`Something went wrong: ${e}`));
+  };
+
   const handleUpload = {
-    "single-address": handleSingleAddressUpload,
-    "small-batch": handleSmallBatchUpload,
-    "large-batch": handleLargeBatchUpload,
+    "single-address": () => handleSingleAddressUpload(),
+    "small-batch": () => handleSmallBatchUpload(),
+    "large-batch": () => handleLargeBatchUpload(),
   }
 
   const handleFileChange = () => {
@@ -132,7 +154,7 @@ const FileUploader = ({selectedOptionId}) => {
                 disabled={disableButton}
                 variant={disableButton ? 'secondary' : uploadedFileName ? 'success' : 'primary'}
                 id="upload-button"
-                onClick={handleUpload[selectedOptionId]}>
+                onClick={() => handleUpload[selectedOptionId]()}>
                 {uploadedFileName ? "Success!" : "Upload"}
               </Button>
             </InputGroup>

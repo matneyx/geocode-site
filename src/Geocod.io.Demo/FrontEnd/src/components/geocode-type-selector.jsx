@@ -8,11 +8,11 @@ export const dropdownOptions = [
     displayText: "Single Address"
   },
   {
-    id: "batch-csv",
+    id: "small-batch",
     displayText: "Small Batch"
   },
   {
-    id: "large-batch-csv",
+    id: "large-batch",
     displayText: "Large Batch"
   }
 ];

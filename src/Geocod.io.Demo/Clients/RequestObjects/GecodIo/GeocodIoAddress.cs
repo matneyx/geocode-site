@@ -1,5 +1,9 @@
+using CsvHelper.Configuration;
+using CsvHelper.Configuration.Attributes;
+
 namespace Geocod.io.Demo.Endpoints;
 
+[TrimOptions(TrimOptions.Trim)]
 public class GeocodIoAddress
 {
     public string Address { get; set; }

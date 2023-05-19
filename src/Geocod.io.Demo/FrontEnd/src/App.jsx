@@ -1,4 +1,4 @@
-import FileUploader from './components/file-uploader';
+import GeocodeTypeSelector from "./components/geocode-type-selector.jsx";
 import SiteNavbar from './components/site-navbar';
 import Stack from 'react-bootstrap/Stack';
 
@@ -10,7 +10,7 @@ const App = () => {
     <>
       <SiteNavbar/>
       <Stack gap={2} className="col-md-5 mx-auto">
-        <FileUploader/>
+        <GeocodeTypeSelector />
       </Stack>
     </>
   )

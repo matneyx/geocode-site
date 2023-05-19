@@ -1,3 +1,5 @@
+using Geocod.io.Demo.Hubs;
+
 namespace Geocod.io.Demo;
 
 public class Program
