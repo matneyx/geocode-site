@@ -7,15 +7,9 @@ namespace Geocod.io.Demo.Hubs;
 
 public interface IGeocodeHub
 {
-    Task SendHandshake(Handshake handshake);
-    Task ReceiveHandshake(Handshake handshake);
-    Task UploadGeocodeFile(FormFile file);
     Task GeocodeStart(GeocodeData data);
     Task GeocodeUpdate(GeocodeData data);
     Task GeocodeComplete(GeocodeData data);
-    Task GetGeocodedFile(string transactionId);
-    Task ReceiveGeocodedData(IEnumerable<GeocodIoResponse> data);
-    Task InvalidFile(string message);
 }
 
 public class GeocodeHub : Hub<IGeocodeHub>
@@ -54,30 +48,5 @@ public class GeocodeHub : Hub<IGeocodeHub>
         }
 
         await Clients.Client(connectionId).GeocodeComplete(statusUpdate);
-    }
-
-    public Task GeocodeStart(GeocodeData data)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task GeocodeUpdate(GeocodeData data)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task GeocodeComplete(GeocodeData data)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task GetGeocodedFile(string transactionId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task ReceiveGeocodedData(IEnumerable<GeocodIoResponse> data)
-    {
-        throw new NotImplementedException();
     }
 }

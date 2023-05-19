@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Security.AccessControl;
 using Boa.Constrictor.Screenplay;
 using Boa.Constrictor.Selenium;
 using Geocod.io.Demo.E2E.Framework;
 using Geocod.io.Demo.E2E.Framework.Logger;
 using Geocod.io.Demo.E2E.Screenplay.Pages;
 using Ocaramba;
+using OpenQA.Selenium;
 using Shouldly;
 using TechTalk.SpecFlow;
 using Xunit;
@@ -56,17 +58,20 @@ public class GeocodioDemoSteps : IClassFixture<UiTestFixture>
         _actor.AsksFor(Text.Of(LandingPage.FileUploadedToastBody.AsWebLocator())).ShouldBe("File name: test.csv");
     }
 
-    [Then(@"I should get a list of coordinates for the addresses in the file")]
-    public void ThenIShouldGetAListOfCoordinatesForTheAddressesInTheFile()
+    [Then(@"I should get a list of (.*) coordinates for the addresses in the file")]
+    public void ThenIShouldGetAListOfCoordinatesForTheAddressesInTheFile(int numberOfAddressCards)
     {
         _actor.WaitsUntil(Appearance.Of(LandingPage.AddressCardContainer.AsWebLocator()), IsEqualTo.True());
-        _actor.AsksFor(Count.Of(LandingPage.AddressCard.AsWebLocator())).ShouldBe(24);
+        _actor.AsksFor(Count.Of(LandingPage.AddressCard.AsWebLocator())).ShouldBe(numberOfAddressCards);
     }
 
     [Given(@"I have selected ""(.*)"" from the menu")]
     public void GivenIHaveSelectedFromTheMenu(string dropdownSelectionText)
     {
-        _actor.AttemptsTo(Select.ByText(LandingPage.GeocodeTypeSelector.AsWebLocator(), dropdownSelectionText));
+        _actor.AttemptsTo(Click.On(LandingPage.GeocodeTypeSelector.AsWebLocator()));
+        _actor.AttemptsTo(Click.On(new WebLocator($"Menu Item:{dropdownSelectionText}", By.LinkText(dropdownSelectionText))));
     }
+
+
 }
 

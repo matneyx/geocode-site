@@ -81,14 +81,14 @@ namespace Geocod.io.Demo.E2E.Features.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="I can upload a file")]
+        [Xunit.SkippableFactAttribute(DisplayName="I can Geocode a small batch of addresses from a file")]
         [Xunit.TraitAttribute("FeatureTitle", "Geocod_io_Demo")]
-        [Xunit.TraitAttribute("Description", "I can upload a file")]
-        public void ICanUploadAFile()
+        [Xunit.TraitAttribute("Description", "I can Geocode a small batch of addresses from a file")]
+        public void ICanGeocodeASmallBatchOfAddressesFromAFile()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can upload a file", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can Geocode a small batch of addresses from a file", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
    this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -103,19 +103,62 @@ namespace Geocod.io.Demo.E2E.Features.Features
     testRunner.Given("I have loaded the site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-    testRunner.And("There is a file upload field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("I have selected \"Small Batch\" from the menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
-    testRunner.When("I select a file to upload", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.And("There is a file upload field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-    testRunner.And("I click the Upload button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.When("I select a file to upload", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
-    testRunner.Then("I should get a message that the file was uploaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.And("I click the Upload button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
-    testRunner.And("I should get a list of coordinates for the addresses in the file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.Then("I should get a message that the file was uploaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 13
+    testRunner.And("I should get a list of 24 coordinates for the addresses in the file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="I can Geocode a large batch of addresses from a file")]
+        [Xunit.TraitAttribute("FeatureTitle", "Geocod_io_Demo")]
+        [Xunit.TraitAttribute("Description", "I can Geocode a large batch of addresses from a file")]
+        public void ICanGeocodeALargeBatchOfAddressesFromAFile()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can Geocode a large batch of addresses from a file", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 17
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 18
+      testRunner.Given("I have loaded the site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 19
+      testRunner.And("I have selected \"Large Batch\" from the menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 20
+      testRunner.And("There is a file upload field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 21
+      testRunner.When("I select a file to upload", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 22
+      testRunner.And("I click the Upload button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 25
+      testRunner.Then("I should get a list of 23 coordinates for the addresses in the file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

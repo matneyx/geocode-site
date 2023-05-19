@@ -39,6 +39,7 @@ const FileUploader = ({selectedOptionId}) => {
           });
 
           connection.on("GeocodeComplete", async () => {
+            console.log("GeocodeComplete")
             setUploadProgress(100);
             setUploadStatus("Upload Complete");
 
@@ -65,9 +66,8 @@ const FileUploader = ({selectedOptionId}) => {
         method: 'POST',
         body: data
       }).then(async response => {
-
+        console.log("Small Batch:")
         const responseBody = await response.json();
-
         setShowAddressCards(true);
         setAddressCards(responseBody);
         setUploadedFileName(inputRef.current.files[0].name);
@@ -87,7 +87,6 @@ const FileUploader = ({selectedOptionId}) => {
         body: data
       }).then(async response => {
         const responseBody = await response.json();
-        console.log(responseBody);
 
         await initiateSignalRConnection()
           .then(() => {

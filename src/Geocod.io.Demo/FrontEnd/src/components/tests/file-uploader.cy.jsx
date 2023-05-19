@@ -12,8 +12,8 @@ describe('<FileUploader />', () => {
 
   describe('Small Batch', () => {
     it('Uploads a file and render returned information', () => {
-      cy.intercept('POST', 'api/geocode/from-file', {fixture: 'good-response.json'})
-        .as('geocodeFromFile');
+      cy.intercept('POST', 'api/geocode/small-batch', {fixture: 'good-response.json'})
+        .as('geocodeSmallBatch');
 
       cy.mount(<FileUploader selectedOptionId="small-batch"/>);
 
@@ -28,7 +28,7 @@ describe('<FileUploader />', () => {
 
         cy.get('.btn').click();
 
-        cy.wait('@geocodeFromFile').then((interception) => {
+        cy.wait('@geocodeSmallBatch').then((interception) => {
           expect(interception.request.body).to.contain(fileContent);
         });
       });
@@ -45,6 +45,14 @@ describe('<FileUploader />', () => {
 
   describe('Large Batch', () => {
     it('Uploads a file and render returned information', () => {
+      cy.intercept('POST', 'api/geocode/large-batch', {statusCode: 202, body:{ batchId: 8675309}})
+        .as('geocodeLargeBatch');
+
+      cy.fixture('good-response.json').then(fileContent => {
+        cy.intercept('GET', 'api/geocode/download-results?batchId=8675309', { body: fileContent })
+          .as('downloadResults');
+      });
+
       cy.mount(<FileUploader selectedOptionId="large-batch"/>);
 
       cy.get('#upload-progress').should('not.exist');
@@ -56,39 +64,36 @@ describe('<FileUploader />', () => {
           fileContent,
           filePath: 'good-test.csv'
         });
-      });
 
-      cy.window().then((win) => {
-        const data = win["cypress-signalr-mock"];
-        expect(data.mocks[1]).to.be.undefined;
-      });
+        cy.window().then((win) => {
+          const data = win["cypress-signalr-mock"];
+          expect(data.mocks[1]).to.be.undefined;
+        });
 
-      cy.get('.btn').click();
+        cy.get('.btn').click();
+
+        cy.wait('@geocodeLargeBatch').then((interception) => {
+          expect(interception.request.body).to.contain(fileContent);
+        });
+      });
 
       cy.window().then((win) => {
         const data = win["cypress-signalr-mock"];
         expect(data.mocks[1]._serverInvokes).to.have.length(1);
         expect(data.mocks[1]._serverInvokes[0].action).to.equal('SendHandshake');
-        expect(data.mocks[1]._serverInvokes[0].args[0].connected).to.be.true;
+        expect(data.mocks[1]._serverInvokes[0].args[0].batchId).to.equal(8675309);
       });
 
       cy.hubPublish(
         '/hubs/geocode',
         'GeocodeStart',
-        {"connected": true}
+        { batchId: 8675309, progress: 0 }
       );
 
       cy.get("#upload-progress").should('exist');
       cy.get("#upload-progress").should('be.visible');
       cy.get(".progress-bar").invoke('attr', 'aria-valuenow').should('equal', '0');
       cy.get(".progress-bar").should('contain', '0%');
-
-      cy.window().then((win) => {
-        const data = win["cypress-signalr-mock"];
-        expect(data.mocks[1]._serverInvokes).to.have.length(2);
-        expect(data.mocks[1]._serverInvokes[1].action).to.equal('UploadFile');
-        expect(data.mocks[1]._serverInvokes[1].args[0]).to.be.a('FormData');
-      });
 
       cy.hubPublish(
         '/hubs/geocode',
@@ -103,13 +108,20 @@ describe('<FileUploader />', () => {
         cy.hubPublish(
           '/hubs/geocode',
           'GeocodeComplete',
-          response
+          {progress: 100}
         );
-      });
 
-      cy.get('#address-cards').should('exist');
-      cy.get('#address-cards').should('be.visible');
-      cy.get(".address-card").should('have.length', 45);
+        cy.get(".progress-bar").invoke('attr', 'aria-valuenow').should('equal', '100');
+        cy.get(".progress-bar").should('contain', 'Upload Complete');
+
+        cy.wait('@downloadResults');
+
+        cy.get('#upload-progress').should('not.exist');
+        cy.get('#file-uploaded-toast').should('not.exist');
+        cy.get('#address-cards').should('exist');
+        cy.get('#address-cards').should('be.visible');
+        cy.get(".address-card").should('have.length', 45);
+      });
     });
   });
 });

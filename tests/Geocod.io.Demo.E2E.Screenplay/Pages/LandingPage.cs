@@ -17,4 +17,5 @@ public class LandingPage
     public static UniversalLocator AddressCard => new("Address Card", Locator.ClassName, "address-card");
 
     public static UniversalLocator GeocodeTypeSelector => new UniversalLocator("Geocode Type Selector", Locator.Id, "geocode-type-selector");
+    public static UniversalLocator LargeBatchOption => new UniversalLocator("Large Batch Option", Locator.Id, "geocode-type-selector");
 }
